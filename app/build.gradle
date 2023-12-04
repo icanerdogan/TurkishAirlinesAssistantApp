@@ -1,11 +1,12 @@
 plugins {
+    id 'kotlin-kapt'
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
     namespace 'com.ibrahimcanerdogan.turkishairlinesassistant'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.ibrahimcanerdogan.turkishairlinesassistant"
@@ -27,6 +28,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -41,4 +46,14 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Navigation
+    def nav_version = "2.7.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Lottie Animation
+    def lottie_version = "6.1.0"
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
 }
