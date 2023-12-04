@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/availableFragment">
+
+    <fragment
+        android:id="@+id/availableFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.AvailableFragment"
+        android:label="fragment_available"
+        tools:layout="@layout/fragment_available" />
+    <fragment
+        android:id="@+id/calculateMilesFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.CalculateMilesFragment"
+        android:label="fragment_calculate_miles"
+        tools:layout="@layout/fragment_calculate_miles" />
+    <fragment
+        android:id="@+id/portFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.PortFragment"
+        android:label="fragment_port"
+        tools:layout="@layout/fragment_port" />
+    <fragment
+        android:id="@+id/reservationFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.ReservationFragment"
+        android:label="fragment_reservation"
+        tools:layout="@layout/fragment_reservation" />
+    <fragment
+        android:id="@+id/timetableFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.TimetableFragment"
+        android:label="fragment_timetable"
+        tools:layout="@layout/fragment_timetable" />
+</navigation>
