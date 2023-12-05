@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/White"
     tools:context=".MainActivity">
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -12,7 +14,9 @@
         android:layout_height="match_parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation_graph"/>
+        app:navGraph="@navigation/navigation_graph"
+        android:layout_marginBottom="?android:actionBarSize"
+        android:layout_marginTop="80dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -25,6 +29,27 @@
         app:itemIconTint="@drawable/bottom_menu_item_selector"
         app:itemRippleColor="@android:color/transparent"
         android:background="@drawable/bottom_menu_background"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"/>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:src="@drawable/icon_menu"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:src="@drawable/icon_airlines"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
 </FrameLayout>
