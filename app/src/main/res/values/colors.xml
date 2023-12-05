@@ -2,11 +2,18 @@
 <resources>
     <!-- Airlines Color Codes -->
     <color name="AirlinesWhite">#EEEBDD</color>
-    <color name="AirlinesBeige">#FFF5E0</color>
+    <color name="AirlinesBeige">#EEECDD</color>
     <color name="AirlinesPink">#FF6969</color>
+    <color name="AirlinesBrightPink">#E23E57</color>
     <color name="AirlinesOrange">#EE4540</color>
     <color name="AirlinesRed">#C70A0C</color>
+    <color name="AirlinesBrightRed1">#D72323</color>
+    <color name="AirlinesBrightRed2">#ED2B2A</color>
+    <color name="AirlinesBrightRed3">#FF0303</color>
     <color name="AirlinesBlue">#0E1632</color>
+    <color name="AirlinesDarkBlue">#0D0B26</color>
+    <color name="AirlinesGray">#3A4750</color>
+    <color name="AirlinesDarkGray">#303841</color>
     <color name="AirlinesPurple">#2D132C</color>
 
     <color name="Black">#FF000000</color>
