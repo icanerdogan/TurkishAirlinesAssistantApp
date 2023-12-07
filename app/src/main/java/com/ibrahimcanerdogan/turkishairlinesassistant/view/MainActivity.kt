@@ -1,16 +1,18 @@
-package com.ibrahimcanerdogan.turkishairlinesassistant
+package com.ibrahimcanerdogan.turkishairlinesassistant.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import com.ibrahimcanerdogan.turkishairlinesassistant.R
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.ActivityMainBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.AvailableFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.CalculateMilesFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.PortFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.ReservationFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.TimetableFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

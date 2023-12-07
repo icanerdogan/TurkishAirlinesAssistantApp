@@ -5,35 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ibrahimcanerdogan.turkishairlinesassistant.R
+import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentCalculateMilesBinding
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestDetail
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.CalculateFlightRequest
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestHeader
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.toJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.fromJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CalculateMilesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class CalculateMilesFragment : Fragment() {
 
     private var _binding: FragmentCalculateMilesBinding? = null
     private val binding get() = _binding!!
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val viewModel by lazy {
+        ViewModelProvider(this, factory).get(CalculateViewModel::class.java)
     }
+
+    @Inject
+    lateinit var factory: CalculateViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,24 +38,25 @@ class CalculateMilesFragment : Fragment() {
         return binding.root
      }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CalculateMilesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CalculateMilesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.calculateFlightMiles(
+            CalculateFlightRequest(
+                FlightMilesRequestDetail(
+                    flightMilesDetailCardType = "CC",
+                    flightMilesDetailClassCode = "H",
+                    flightMilesDetailDestination = "ADS",
+                    flightMilesDetailFlightDate = "19.12.2023",
+                    flightMilesDetailOrigin = "IST"
+                ),
+                FlightMilesRequestHeader()
+            ).toJsonObject()
+        )
+
+        viewModel.flightMilesData.observe(viewLifecycleOwner) {
+            println(it.fromJsonObject().flightMilesResponseMessage)
+        }
     }
 
     override fun onDestroyView() {
