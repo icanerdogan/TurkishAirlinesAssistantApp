@@ -2,8 +2,10 @@ package com.ibrahimcanerdogan.turkishairlinesassistant.view.dependencyinjection
 
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostReservationUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModelFactory
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +30,13 @@ class ViewModelFactoryModule {
         postPortUseCase: PostPortUseCase
     ) : PortViewModelFactory {
         return PortViewModelFactory(postPortUseCase)
+    }
+
+    @Singleton
+    @Provides
+    fun provideReservationViewModelFactory(
+        postReservationUseCase: PostReservationUseCase
+    ) : ReservationViewModelFactory {
+        return ReservationViewModelFactory(postReservationUseCase)
     }
 }

@@ -10,7 +10,7 @@ data class CalculateFlightRequest(
     val flightMilesRequestHeader: FlightMilesRequestHeader
 )
 
-fun CalculateFlightRequest.toJsonObject(): JSONObject {
+fun CalculateFlightRequest.calculateFlightToJsonObject(): JSONObject {
     val jsonObject = JSONObject()
 
     val requestHeaderObject = JSONObject()

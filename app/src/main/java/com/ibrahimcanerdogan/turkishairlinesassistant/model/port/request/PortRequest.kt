@@ -8,7 +8,7 @@ data class PortRequest(
     val requestHeader: PortRequestHeader
 )
 
-fun PortRequest.toJsonObject(): JSONObject {
+fun PortRequest.portToJsonObject(): JSONObject {
      val jsonObject = JSONObject()
 
     val requestHeaderObject = JSONObject()

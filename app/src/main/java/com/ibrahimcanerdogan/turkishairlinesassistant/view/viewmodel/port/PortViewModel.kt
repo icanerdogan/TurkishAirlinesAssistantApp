@@ -9,8 +9,9 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import javax.inject.Inject
 
-class PortViewModel(
+class PortViewModel @Inject constructor(
     private val postPortUseCase: PostPortUseCase
 ) : ViewModel() {
 

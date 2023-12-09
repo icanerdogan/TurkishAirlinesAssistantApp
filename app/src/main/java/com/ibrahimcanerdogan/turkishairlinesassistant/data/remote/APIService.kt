@@ -22,4 +22,13 @@ interface APIService {
     )
     @POST("getPortList")
     suspend fun apiPostPort(@Body postData: RequestBody): String
+
+    @Headers(
+        "apisecret: ${BuildConfig.API_SECRET}",
+        "Content-Type: application/json",
+        "apikey: ${BuildConfig.API_KEY}"
+    )
+    @POST("retrieveReservationDetail")
+    suspend fun apiRetrieveReservationDetail(@Body postData: RequestBody): String
+
 }

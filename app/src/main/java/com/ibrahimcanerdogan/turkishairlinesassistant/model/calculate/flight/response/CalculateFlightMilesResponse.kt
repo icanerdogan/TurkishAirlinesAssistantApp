@@ -14,7 +14,7 @@ data class CalculateFlightMilesResponse(
     val flightMilesStatus: String
 )
 
-fun String.fromJsonObject(): CalculateFlightMilesResponse {
+fun String.calculateFlightFromJsonObject(): CalculateFlightMilesResponse {
 
     return Gson().fromJson(this, CalculateFlightMilesResponse::class.java)
 }

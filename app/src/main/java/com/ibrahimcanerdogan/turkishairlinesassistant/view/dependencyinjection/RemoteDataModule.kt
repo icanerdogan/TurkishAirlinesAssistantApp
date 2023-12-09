@@ -5,6 +5,8 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.calculate.
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.calculate.flight.CalculateFlightMilesDataSourceImpl
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.port.PortDataSource
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.port.PortDataSourceImpl
+import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation.ReservationDataSource
+import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation.ReservationDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,5 +31,13 @@ class RemoteDataModule {
         apiService: APIService
     ) : PortDataSource {
         return PortDataSourceImpl(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideReservationDataSource(
+        apiService: APIService
+    ) : ReservationDataSource {
+        return ReservationDataSourceImpl(apiService)
     }
 }

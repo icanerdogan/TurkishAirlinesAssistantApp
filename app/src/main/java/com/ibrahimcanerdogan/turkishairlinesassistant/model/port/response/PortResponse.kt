@@ -14,7 +14,7 @@ data class PortResponse(
     val portResponseStatus: String
 )
 
-fun String.fromJsonObject(): PortResponse {
+fun String.portFromJsonObject(): PortResponse {
 
     return Gson().fromJson(this, PortResponse::class.java)
 }

@@ -4,8 +4,11 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.calculate.
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.calculate.flight.CalculateFlightMilesRepositoryImpl
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.port.PortDataSource
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.port.PortRepositoryImpl
+import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation.ReservationDataSource
+import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation.ReservationRepositoryImpl
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.CalculateRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.PortRepository
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.ReservationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +33,13 @@ class RepositoryModule {
         portDataSource: PortDataSource
     ) : PortRepository {
         return PortRepositoryImpl(portDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideReservationRepository(
+        reservationDataSource: ReservationDataSource
+    ) : ReservationRepository {
+        return ReservationRepositoryImpl(reservationDataSource)
     }
 }
