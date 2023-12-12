@@ -10,8 +10,8 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentCalcul
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestDetail
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.CalculateFlightRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestHeader
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.toJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.fromJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.calculateFlightToJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.calculateFlightFromJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,11 +51,11 @@ class CalculateMilesFragment : Fragment() {
                     flightMilesDetailOrigin = "IST"
                 ),
                 FlightMilesRequestHeader()
-            ).toJsonObject()
+            ).calculateFlightToJsonObject()
         )
 
         viewModel.flightMilesData.observe(viewLifecycleOwner) {
-            println(it.fromJsonObject().flightMilesResponseMessage)
+            println(it.calculateFlightFromJsonObject().flightMilesResponseMessage)
         }
     }
 

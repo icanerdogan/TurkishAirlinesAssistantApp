@@ -3,8 +3,9 @@ package com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
+import javax.inject.Inject
 
-class CalculateViewModelFactory(
+class CalculateViewModelFactory @Inject constructor(
     private val postCalculateFlightMilesUseCase: PostCalculateFlightMilesUseCase
 ) : ViewModelProvider.Factory {
 

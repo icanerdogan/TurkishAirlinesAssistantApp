@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentPortBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.PortRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.PortRequestHeader
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.toJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.fromJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.portToJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.portFromJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,10 +40,10 @@ class PortFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getPortData(PortRequest(requestHeader = PortRequestHeader()).toJsonObject())
+        viewModel.getPortData(PortRequest(requestHeader = PortRequestHeader()).portToJsonObject())
 
         viewModel.portData.observe(viewLifecycleOwner) {
-            println(it?.fromJsonObject()?.portResponseMessage)
+            println(it?.portFromJsonObject()?.portResponseMessage)
         }
     }
     override fun onDestroyView() {

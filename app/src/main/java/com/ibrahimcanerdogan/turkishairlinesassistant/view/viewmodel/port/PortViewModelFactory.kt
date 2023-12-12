@@ -3,8 +3,9 @@ package com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
+import javax.inject.Inject
 
-class PortViewModelFactory(
+class PortViewModelFactory @Inject constructor(
     private val useCase: PostPortUseCase
 ) : ViewModelProvider.Factory {
 

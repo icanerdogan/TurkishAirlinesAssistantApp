@@ -9,9 +9,9 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalcula
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import javax.inject.Inject
 
-
-class CalculateViewModel(
+class CalculateViewModel @Inject constructor(
     private val postCalculateFlightMilesUseCase: PostCalculateFlightMilesUseCase
 ): ViewModel() {
 
