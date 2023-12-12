@@ -4,10 +4,12 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.Availabl
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.CalculateRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.PortRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.ReservationRepository
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.TimetableRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostAvailableFlightsUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostReservationUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostTimetableUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,4 +52,11 @@ class UseCaseModule {
         return PostAvailableFlightsUseCase(availableFlightsRepository)
     }
 
+    @Singleton
+    @Provides
+    fun provideTimetableUseCase(
+        timetableRepository: TimetableRepository
+    ) : PostTimetableUseCase {
+        return PostTimetableUseCase(timetableRepository)
+    }
 }
