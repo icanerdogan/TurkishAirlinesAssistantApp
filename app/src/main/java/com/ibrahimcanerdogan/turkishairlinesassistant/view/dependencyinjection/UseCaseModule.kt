@@ -1,8 +1,10 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.view.dependencyinjection
 
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.AvailableFlightsRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.CalculateRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.PortRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.ReservationRepository
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostAvailableFlightsUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostReservationUseCase
@@ -39,4 +41,13 @@ class UseCaseModule {
     ) : PostReservationUseCase {
         return PostReservationUseCase(reservationRepository)
     }
+
+    @Singleton
+    @Provides
+    fun provideAvailableFlightsUseCase(
+        availableFlightsRepository: AvailableFlightsRepository
+    ) : PostAvailableFlightsUseCase {
+        return PostAvailableFlightsUseCase(availableFlightsRepository)
+    }
+
 }
