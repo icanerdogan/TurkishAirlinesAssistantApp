@@ -39,4 +39,12 @@ interface APIService {
     @POST("getAvailability")
     suspend fun apiAvailableFlights(@Body postData: RequestBody): String
 
+    @Headers(
+        "apisecret: ${BuildConfig.API_SECRET}",
+        "Content-Type: application/json",
+        "apikey: ${BuildConfig.API_KEY}"
+    )
+    @POST("getTimeTable")
+    suspend fun apiTimetable(@Body postData: RequestBody): String
+
 }

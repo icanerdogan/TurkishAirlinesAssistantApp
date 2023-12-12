@@ -4,10 +4,12 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostAvailab
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostReservationUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostTimetableUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.available.AvailableFlightsViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModelFactory
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,5 +50,13 @@ class ViewModelFactoryModule {
         postAvailableFlightsUseCase: PostAvailableFlightsUseCase
     ) : AvailableFlightsViewModelFactory {
         return AvailableFlightsViewModelFactory(postAvailableFlightsUseCase)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTimetableViewModelFactory(
+        postTimetableUseCase: PostTimetableUseCase
+    ) : TimetableViewModelFactory {
+        return TimetableViewModelFactory(postTimetableUseCase)
     }
 }

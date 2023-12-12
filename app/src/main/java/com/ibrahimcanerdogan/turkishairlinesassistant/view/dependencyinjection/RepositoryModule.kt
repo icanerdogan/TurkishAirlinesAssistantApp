@@ -8,10 +8,13 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.port.PortD
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.port.PortRepositoryImpl
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation.ReservationDataSource
 import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation.ReservationRepositoryImpl
+import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.timetable.TimetableDataSource
+import com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.timetable.TimetableRepositoryImpl
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.AvailableFlightsRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.CalculateRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.PortRepository
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.ReservationRepository
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.TimetableRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,5 +55,13 @@ class RepositoryModule {
         availableFlightsDataSource: AvailableFlightsDataSource
     ) : AvailableFlightsRepository {
         return AvailableFlightsRepositoryImpl(availableFlightsDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTimetableRepository(
+        timetableDataSource: TimetableDataSource
+    ) : TimetableRepository {
+        return TimetableRepositoryImpl(timetableDataSource)
     }
 }
