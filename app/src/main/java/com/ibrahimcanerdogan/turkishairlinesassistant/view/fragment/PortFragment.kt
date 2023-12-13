@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentPortBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.PortRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.PortRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.request.portToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.portFromJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +43,10 @@ class PortFragment : Fragment() {
         viewModel.getPortData(PortRequest(requestHeader = PortRequestHeader()).portToJsonObject())
 
         viewModel.portData.observe(viewLifecycleOwner) {
-            println(it?.portFromJsonObject()?.portResponseMessage)
+            it?.let {
+                println(it.portResponseMessage.portMessageDescription)
+                Toast.makeText(requireContext(), it.portResponseMessage.portMessageDescription, Toast.LENGTH_LONG).show()
+            }
         }
     }
     override fun onDestroyView() {

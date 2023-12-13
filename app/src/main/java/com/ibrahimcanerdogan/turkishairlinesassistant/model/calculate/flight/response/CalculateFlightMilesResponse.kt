@@ -1,6 +1,5 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response
 
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
 data class CalculateFlightMilesResponse(
@@ -13,11 +12,6 @@ data class CalculateFlightMilesResponse(
     @SerializedName("status")
     val flightMilesStatus: String
 )
-
-fun String.calculateFlightFromJsonObject(): CalculateFlightMilesResponse {
-
-    return Gson().fromJson(this, CalculateFlightMilesResponse::class.java)
-}
 
 /*
 {

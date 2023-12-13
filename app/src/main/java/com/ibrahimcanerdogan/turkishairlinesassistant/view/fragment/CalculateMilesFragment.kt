@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentCalculateMilesBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestDetail
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.CalculateFlightRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.calculateFlightToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.calculateFlightFromJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,7 +55,8 @@ class CalculateMilesFragment : Fragment() {
         )
 
         viewModel.flightMilesData.observe(viewLifecycleOwner) {
-            println(it.calculateFlightFromJsonObject().flightMilesResponseMessage)
+            println(it.flightMilesResponseMessage)
+            Toast.makeText(requireContext(), it.flightMilesResponseMessage.flightMilesMessageDescription, Toast.LENGTH_LONG).show()
         }
     }
 

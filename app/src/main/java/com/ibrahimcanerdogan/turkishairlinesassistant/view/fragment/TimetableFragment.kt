@@ -17,7 +17,6 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.Or
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.RequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.TimetableRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.timetableRequestToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.timetableResponseFromJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,12 +52,12 @@ class TimetableFragment : Fragment() {
                 OTA_AirScheduleRQ = OTAAirScheduleRQ(
                     FlightTypePref = FlightTypePref(DirectAndNonStopOnlyInd = false),
                     OriginDestinationInformation = OriginDestinationInformation(
-                        DepartureDateTime(WindowAfter = "P3D", WindowBefore= "P3D", Date = "2023-12-12"),
+                        DepartureDateTime(WindowAfter = "P3D", WindowBefore= "P3D", Date = "2023-12-13"),
                         DestinationLocation(LocationCode = "ESB", MultiAirportCityInd = false),
                         OriginLocation(LocationCode= "IST", MultiAirportCityInd = true)
                     )
                 ),
-                returnDate = "2023-12-12",
+                returnDate = "2023-12-13",
                 scheduleType = "W",
                 tripType = "R"
             ).timetableRequestToJsonObject()
@@ -66,8 +65,8 @@ class TimetableFragment : Fragment() {
 
         viewModel.timetableData.observe(viewLifecycleOwner) {
             it?.let {
-                println(it.timetableResponseFromJsonObject().message)
-                Toast.makeText(requireContext(), it.timetableResponseFromJsonObject().message.description, Toast.LENGTH_LONG).show()
+                println(it.message)
+                Toast.makeText(requireContext(), it.message.description, Toast.LENGTH_LONG).show()
             }
         }
 
