@@ -1,6 +1,10 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.data.remote
 
 import com.ibrahimcanerdogan.turkishairlinesassistant.BuildConfig
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.CalculateFlightMilesResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.PortResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.ReservationResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -13,7 +17,7 @@ interface APIService {
         "apikey: ${BuildConfig.API_KEY}"
     )
     @POST("calculateFlightMiles")
-    suspend fun apiPostCalculateFlightMiles(@Body postData: RequestBody): String
+    suspend fun apiPostCalculateFlightMiles(@Body postData: RequestBody): CalculateFlightMilesResponse
 
     @Headers(
         "apisecret: ${BuildConfig.API_SECRET}",
@@ -21,7 +25,7 @@ interface APIService {
         "apikey: ${BuildConfig.API_KEY}"
     )
     @POST("getPortList")
-    suspend fun apiPostPort(@Body postData: RequestBody): String
+    suspend fun apiPostPort(@Body postData: RequestBody): PortResponse
 
     @Headers(
         "apisecret: ${BuildConfig.API_SECRET}",
@@ -29,7 +33,7 @@ interface APIService {
         "apikey: ${BuildConfig.API_KEY}"
     )
     @POST("retrieveReservationDetail")
-    suspend fun apiRetrieveReservationDetail(@Body postData: RequestBody): String
+    suspend fun apiRetrieveReservationDetail(@Body postData: RequestBody): ReservationResponse
 
     @Headers(
         "apisecret: ${BuildConfig.API_SECRET}",
@@ -45,6 +49,6 @@ interface APIService {
         "apikey: ${BuildConfig.API_KEY}"
     )
     @POST("getTimeTable")
-    suspend fun apiTimetable(@Body postData: RequestBody): String
+    suspend fun apiTimetable(@Body postData: RequestBody): TimetableResponse
 
 }

@@ -6,17 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.CalculateFlightMilesResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import javax.inject.Inject
 
+@HiltViewModel
 class CalculateViewModel @Inject constructor(
     private val postCalculateFlightMilesUseCase: PostCalculateFlightMilesUseCase
 ): ViewModel() {
 
-    private var flightMiles = MutableLiveData<String>()
-    val flightMilesData : LiveData<String>
+    private var flightMiles = MutableLiveData<CalculateFlightMilesResponse>()
+    val flightMilesData : LiveData<CalculateFlightMilesResponse>
         get() = flightMiles
     fun calculateFlightMiles(postData: JSONObject) = viewModelScope.launch(Dispatchers.IO) {
         try {

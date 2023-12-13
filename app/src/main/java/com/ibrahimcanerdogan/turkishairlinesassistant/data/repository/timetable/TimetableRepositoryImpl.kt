@@ -2,6 +2,7 @@ package com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.timetable
 
 import com.google.gson.JsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.TimetableRepository
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,7 +13,7 @@ class TimetableRepositoryImpl @Inject constructor(
     private val timetableDataSource: TimetableDataSource
 ) : TimetableRepository {
 
-    override suspend fun apiTimetable(postData: JsonObject): String? {
+    override suspend fun apiTimetable(postData: JsonObject): TimetableResponse? {
         val jsonMediaType = "application/json; charset=utf-8".toMediaType()
         val requestBody = postData.toString().toRequestBody(jsonMediaType)
 

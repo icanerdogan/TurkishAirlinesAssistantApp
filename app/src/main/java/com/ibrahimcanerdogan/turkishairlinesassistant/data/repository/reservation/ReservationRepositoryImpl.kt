@@ -1,6 +1,7 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.data.repository.reservation
 
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.repository.ReservationRepository
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.ReservationResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,7 +13,7 @@ class ReservationRepositoryImpl @Inject constructor(
     private val reservationDataSource: ReservationDataSource
 ) : ReservationRepository {
 
-    override suspend fun apiReservationDetail(postData: JSONObject): String? {
+    override suspend fun apiReservationDetail(postData: JSONObject): ReservationResponse? {
         val jsonMediaType = "application/json; charset=utf-8".toMediaType()
         val requestBody = postData.toString().toRequestBody(jsonMediaType)
 

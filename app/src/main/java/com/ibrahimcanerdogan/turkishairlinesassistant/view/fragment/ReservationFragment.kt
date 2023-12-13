@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentReservationBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.international.ReservationInternationalRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.international.ReservationInternationalRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.international.ReservationInternationalOTARequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.international.reservationInternationalToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.reservationFromJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,8 +53,10 @@ class ReservationFragment : Fragment() {
         ).reservationInternationalToJsonObject())
 
         viewModel.reservationData.observe(viewLifecycleOwner) {
-            if (!it.isNullOrEmpty()) println(it.reservationFromJsonObject().message.description)
-            else Log.e(TAG, "reservationData is empty.")
+            it?.let {
+                println(it.message)
+                Toast.makeText(requireContext(), it.message.description, Toast.LENGTH_LONG).show()
+            }
         }
     }
     override fun onDestroyView() {

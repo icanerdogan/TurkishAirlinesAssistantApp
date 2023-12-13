@@ -6,17 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.PortResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import javax.inject.Inject
 
+@HiltViewModel
 class PortViewModel @Inject constructor(
     private val postPortUseCase: PostPortUseCase
 ) : ViewModel() {
 
-    private var port = MutableLiveData<String?>()
-    val portData : LiveData<String?>
+    private var port = MutableLiveData<PortResponse?>()
+    val portData : LiveData<PortResponse?>
         get() = port
     fun getPortData(postData: JSONObject) = viewModelScope.launch(Dispatchers.IO) {
         try {
