@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_available" />
     <fragment
         android:id="@+id/calculateMilesFragment"
-        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.CalculateMilesFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.CalculateFragment"
         android:label="fragment_calculate_miles"
-        tools:layout="@layout/fragment_calculate_miles" />
+        tools:layout="@layout/fragment_calculate" />
     <fragment
         android:id="@+id/portFragment"
         android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.PortFragment"

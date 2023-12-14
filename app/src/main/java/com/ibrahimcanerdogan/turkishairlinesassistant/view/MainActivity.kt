@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.R
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.ActivityMainBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.AvailableFlightsFragment
-import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.CalculateMilesFragment
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.CalculateFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.PortFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.ReservationFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.TimetableFragment
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             bottomNavigationView.setOnItemSelectedListener {
                 when(it.itemId) {
                     R.id.bottom_menu_available -> replaceFragment(AvailableFlightsFragment())
-                    R.id.bottom_menu_calculate -> replaceFragment(CalculateMilesFragment())
+                    R.id.bottom_menu_calculate -> replaceFragment(CalculateFragment())
                     R.id.bottom_menu_port -> replaceFragment(PortFragment())
                     R.id.bottom_menu_timetable -> replaceFragment(TimetableFragment())
                     R.id.bottom_menu_reservation -> replaceFragment(ReservationFragment())
