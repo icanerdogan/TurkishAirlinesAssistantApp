@@ -24,7 +24,7 @@
                 android:layout_margin="20dp"
                 android:layout_weight="0.5"
                 android:hint="@string/origin"
-                app:endIconDrawable="@drawable/icon_calculate_flight_miles"
+                app:endIconDrawable="@drawable/icon_flight_takeoff"
                 app:endIconMode="custom">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -39,7 +39,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/icon_port"
+                android:src="@drawable/icon_connect_airport"
                 android:tint="@color/Black" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -48,7 +48,7 @@
                 android:layout_margin="20dp"
                 android:layout_weight="0.5"
                 android:hint="@string/destination"
-                app:endIconDrawable="@drawable/icon_calculate_flight_miles"
+                app:endIconDrawable="@drawable/icon_flight_land"
                 app:endIconMode="custom">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -209,6 +209,7 @@
             android:layout_margin="10dp">
 
             <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switchBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"

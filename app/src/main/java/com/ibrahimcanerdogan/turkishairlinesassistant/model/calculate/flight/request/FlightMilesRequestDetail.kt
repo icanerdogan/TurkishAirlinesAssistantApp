@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName
 data class FlightMilesRequestDetail(
     @SerializedName("card_type")
     val flightMilesDetailCardType: String,
-    @SerializedName("class_code")
-    val flightMilesDetailClassCode: String,
     @SerializedName("destination")
     val flightMilesDetailDestination: String,
     @SerializedName("flightDate")

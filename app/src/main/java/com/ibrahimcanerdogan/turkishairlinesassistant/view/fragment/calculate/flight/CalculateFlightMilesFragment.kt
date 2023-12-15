@@ -6,14 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.ibrahimcanerdogan.turkishairlinesassistant.R
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentCalculateFlightMilesBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.CalculateFlightRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestDetail
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.calculateFlightToJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.FlightMilesResponseDataDetail
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,7 +78,6 @@ class CalculateFlightMilesFragment : Fragment() {
             }
 
             var airlinesCode = "TK"
-
             radioButtonTurkishAirlines.setOnCheckedChangeListener { _, checkedId ->
                 if(checkedId) {
                     airlinesCode = "TK"
@@ -93,37 +91,49 @@ class CalculateFlightMilesFragment : Fragment() {
                 }
             }
 
+            var isBusiness = false
+            switchBusiness.setOnCheckedChangeListener { _, isChecked ->
+                isBusiness = isChecked
+            }
+
             buttonCalculateFlightMiles.setOnClickListener {
                 Log.i(TAG, "flightMilesDetailOrigin: ${editTextOrigin.text} flightMilesDetailDestination: ${editTextDestination.text} flightMilesDetailCardType: $cardType")
 
-                viewModel.calculateFlightMiles(
-                    CalculateFlightRequest(
-                        FlightMilesRequestDetail(
-                            flightMilesDetailOrigin = editTextOrigin.text.toString().uppercase(),
-                            flightMilesDetailDestination = editTextDestination.text.toString().uppercase(),
-                            flightMilesDetailCardType = cardType,
-                            flightMilesDetailClassCode = "H",
-                            flightMilesDetailFlightDate = "25.12.2023",
-                        ),
-                        FlightMilesRequestHeader(
-                            flightMilesAirlineCode = airlinesCode
-                        )
-                    ).calculateFlightToJsonObject()
-                )
+                val requestData = CalculateFlightRequest(
+                    FlightMilesRequestDetail(
+                        flightMilesDetailOrigin = editTextOrigin.text.toString().uppercase(),
+                        flightMilesDetailDestination = editTextDestination.text.toString()
+                            .uppercase(),
+                        flightMilesDetailCardType = cardType,
+                        flightMilesDetailFlightDate = "25.12.2023",
+                    ),
+                    FlightMilesRequestHeader(
+                        flightMilesAirlineCode = airlinesCode
+                    )
+                ).calculateFlightToJsonObject()
+
+                if (isBusiness) viewModel.calculateBusinessFlightMilesData(requestData)
+                else viewModel.calculateEconomyFlightMilesData(requestData)
+
             }
 
-            viewModel.flightMilesData.observe(viewLifecycleOwner) {
-                it?.let {
-                    println(it.flightMilesResponseMessage)
-                    Log.i(TAG, it.flightMilesResponseMessage.flightMilesMessageDescription)
+            viewModel.flightMilesBusinessData.observe(viewLifecycleOwner, ::setBusinessData)
+            viewModel.flightMilesEconomyData.observe(viewLifecycleOwner, ::setEconomyData)
 
-                    Toast.makeText(
-                        requireContext(),
-                        it.flightMilesResponseMessage.flightMilesMessageDescription,
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
+        }
+    }
+
+    private fun setEconomyData(data: ArrayList<FlightMilesResponseDataDetail>?) {
+        data?.let {
+            val modalBottomSheet = CalculateFlightMilesBottomSheet.newInstance(data)
+            modalBottomSheet.show(childFragmentManager, CalculateFlightMilesBottomSheet.TAG)
+        }
+    }
+
+    private fun setBusinessData(data: ArrayList<FlightMilesResponseDataDetail>?) {
+        data?.let {
+            val modalBottomSheet = CalculateFlightMilesBottomSheet.newInstance(data)
+            modalBottomSheet.show(childFragmentManager, CalculateFlightMilesBottomSheet.TAG)
         }
     }
 
