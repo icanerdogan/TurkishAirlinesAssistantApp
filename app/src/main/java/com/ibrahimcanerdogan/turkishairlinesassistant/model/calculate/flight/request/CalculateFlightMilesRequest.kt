@@ -24,7 +24,6 @@ fun CalculateFlightRequest.calculateFlightToJsonObject(): JSONObject {
 
     val calculateMilesObject = JSONObject()
     calculateMilesObject.put("card_type", flightMilesRequestDetail.flightMilesDetailCardType)
-    calculateMilesObject.put("class_code", flightMilesRequestDetail.flightMilesDetailClassCode)
     calculateMilesObject.put("destination", flightMilesRequestDetail.flightMilesDetailDestination)
     calculateMilesObject.put("flightDate", flightMilesRequestDetail.flightMilesDetailFlightDate)
     calculateMilesObject.put("origin", flightMilesRequestDetail.flightMilesDetailOrigin)

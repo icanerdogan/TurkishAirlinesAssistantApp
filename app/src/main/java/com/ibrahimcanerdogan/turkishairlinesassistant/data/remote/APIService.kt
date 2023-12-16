@@ -1,12 +1,14 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.data.remote
 
 import com.ibrahimcanerdogan.turkishairlinesassistant.BuildConfig
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.airport.AirportResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.CalculateFlightMilesResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.PortResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.ReservationResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
@@ -18,6 +20,9 @@ interface APIService {
     )
     @POST("calculateFlightMiles")
     suspend fun apiPostCalculateFlightMiles(@Body postData: RequestBody): CalculateFlightMilesResponse
+
+    @GET("https://raw.githubusercontent.com/icanerdogan/public-json-datasets/master/airports/airports.json")
+    suspend fun apiGetAirports(): AirportResponse
 
     @Headers(
         "apisecret: ${BuildConfig.API_SECRET}",

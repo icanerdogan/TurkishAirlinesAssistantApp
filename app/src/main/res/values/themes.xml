@@ -1,8 +1,112 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Light application theme. -->
     <style name="Base.Theme.TurkishAirlinesAssistantApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/AirlinesBlue</item>
+        <item name="colorOnPrimary">@color/White</item>
         <item name="colorPrimaryDark">@color/AirlinesBlue</item>
+        <item name="tabStyle">@style/Widget.App.TabLayout</item>
+        <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
+        <item name="switchStyle">@style/Widget.App.Switch</item>
+        <item name="materialDividerStyle">@style/Widget.App.MaterialDivider</item>
+        <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+        <item name="materialSwitchStyle">@style/Widget.App.Switch</item>
     </style>
 
     <style name="Theme.TurkishAirlinesAssistantApp" parent="Base.Theme.TurkishAirlinesAssistantApp" />
+
+    <!-- Tab Layout -->
+    <style name="Widget.App.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TabLayout</item>
+        <item name="tabTextAppearance">@style/TextAppearance.App.LabelLarge</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/mulish_regular</item>
+        <item name="android:fontFamily">@font/mulish_regular</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TabLayout" parent="">
+        <item name="colorPrimary">@color/AirlinesRed</item>
+        <item name="colorSurface">@color/White</item>
+        <item name="colorOnSurface">@color/AirlinesBlue</item>
+    </style>
+
+    <!-- FAB -->
+    <style name="Widget.App.ExtendedFloatingActionButton" parent="Widget.Material3.ExtendedFloatingActionButton.Icon.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton" parent="">
+        <item name="colorContainer">@color/AirlinesRed</item>
+        <item name="colorOnContainer">@color/White</item>
+    </style>
+
+    <!-- Radio Button -->
+    <style name="Widget.App.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButton" parent="">
+        <item name="colorOnSurface">@color/AirlinesBlue</item>
+        <item name="colorPrimary">@color/AirlinesBlue</item>
+    </style>
+
+    <!-- Switch -->
+    <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="colorPrimary">@color/AirlinesRed</item>
+        <item name="colorOnPrimary">@color/White</item>
+        <item name="colorSurfaceVariant">@color/White</item>
+        <item name="colorContainer">@color/Black</item>
+    </style>
+
+    <!-- Divider -->
+    <style name="Widget.App.MaterialDivider" parent="Widget.Material3.MaterialDivider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.MaterialDivider</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialDivider" parent="">
+        <item name="colorOutline">@color/AirlinesBlue</item>
+    </style>
+
+    <!-- TextInput -->
+
+    <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="hintTextColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="colorPrimary">@color/AirlinesBlue</item>
+        <item name="colorOnSurface">@color/Black</item>
+        <item name="colorError">@color/AirlinesRed</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.App.TitleMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.App.BodySmall</item>
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.OutlinedBox</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/mulish_blackitalic</item>
+        <item name="android:fontFamily">@font/mulish_blackitalic</item>
+    </style>
+
+    <style name="TextAppearance.App.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/mulish_light</item>
+        <item name="android:fontFamily">@font/mulish_light</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
 </resources>

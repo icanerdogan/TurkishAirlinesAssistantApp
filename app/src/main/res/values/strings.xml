@@ -7,4 +7,8 @@
     <string name="available">Available</string>
     <string name="reservation">Reservation</string>
     <string name="timetable">Timetable</string>
+    <string name="flight_miles">Flight Miles</string>
+    <string name="award_miles">Award Miles</string>
+    <string name="origin">FROM</string>
+    <string name="destination">TO</string>
 </resources>

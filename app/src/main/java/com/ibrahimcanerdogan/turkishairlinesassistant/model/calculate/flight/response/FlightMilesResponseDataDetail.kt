@@ -1,7 +1,10 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class FlightMilesResponseDataDetail(
     @SerializedName("baseMiles")
     val flightMilesDetailBaseMiles: String,
@@ -21,4 +24,4 @@ data class FlightMilesResponseDataDetail(
     val flightMilesDetailPromoPoints: String,
     @SerializedName("totalMiles")
     val flightMilesDetailTotalMiles: String
-)
+) : Parcelable
