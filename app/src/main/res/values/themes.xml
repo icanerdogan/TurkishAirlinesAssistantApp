@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Light application theme. -->
     <style name="Base.Theme.TurkishAirlinesAssistantApp" parent="Theme.Material3.Light.NoActionBar">
-        <item name="color">@color/Black</item>
+        <item name="colorPrimary">@color/AirlinesBlue</item>
+        <item name="colorOnPrimary">@color/White</item>
         <item name="colorPrimaryDark">@color/AirlinesBlue</item>
         <item name="tabStyle">@style/Widget.App.TabLayout</item>
         <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>

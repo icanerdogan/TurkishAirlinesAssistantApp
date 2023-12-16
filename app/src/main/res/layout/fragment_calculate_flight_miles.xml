@@ -16,24 +16,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:layout_weight="0.5"
                 android:hint="@string/origin"
                 app:endIconDrawable="@drawable/icon_flight_takeoff"
-                app:endIconMode="custom">
+                app:endIconMode="custom"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/editTextOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="IST"
                     android:maxLength="3"
-                    android:lines="1"/>
+                    android:maxLines="1"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -46,19 +50,21 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:layout_weight="0.5"
                 android:hint="@string/destination"
                 app:endIconDrawable="@drawable/icon_flight_land"
-                app:endIconMode="custom">
+                app:endIconMode="custom"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/editTextDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="DSS"
                     android:maxLength="3"
-                    android:lines="1"/>
+                    android:maxLines="1"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

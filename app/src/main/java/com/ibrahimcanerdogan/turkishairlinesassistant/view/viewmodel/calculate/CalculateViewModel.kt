@@ -36,6 +36,10 @@ class CalculateViewModel @Inject constructor(
     val flightMilesEconomyData : LiveData<ArrayList<FlightMilesResponseDataDetail>>
         get() = flightMilesEconomy
 
+    private var airportList = MutableLiveData<Array<String>>()
+    val airportListData : LiveData<Array<String>>
+        get() = airportList
+
     fun calculateFlightMiles(postData: JSONObject) = viewModelScope.launch(Dispatchers.IO) {
         try {
             flightMiles.postValue(postCalculateFlightMilesUseCase.execute(postData))
@@ -82,4 +86,22 @@ class CalculateViewModel @Inject constructor(
             Log.e("CalculateViewModel", e.message.toString())
         }
     }
+
+    fun getAirportsList() = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            var airports = arrayOf<String>()
+            val airportsList = airports.toMutableList()
+
+            postCalculateFlightMilesUseCase.execute()?.forEach { item ->
+                airportsList.add("${item.airportIataCode} - ${item.airportName}")
+            }
+            airports = airportsList.toTypedArray()
+
+            airportList.postValue(airports)
+        }
+        catch (e: Exception) {
+            Log.e("CalculateViewModel", e.message.toString())
+        }
+    }
+
 }
