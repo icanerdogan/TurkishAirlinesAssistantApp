@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:layout_gravity="center"
-            android:src="@drawable/icon_info"
+            android:src="@drawable/icon_airplane_ticket"
             android:background="@android:color/transparent"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -78,7 +78,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="Base Miles"
-            android:fontFamily="@font/mulish_light"/>
+            android:fontFamily="@font/mulish_regular"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/rowTextViewBaseMiles"
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:layout_gravity="center"
-            android:src="@drawable/icon_info"
+            android:src="@drawable/icon_airplane_ticket"
             android:background="@android:color/transparent"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -114,7 +114,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="Promo Miles"
-            android:fontFamily="@font/mulish_light"/>
+            android:fontFamily="@font/mulish_regular"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/rowTextViewPromoMiles"
@@ -143,7 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:layout_gravity="center"
-            android:src="@drawable/icon_info"
+            android:src="@drawable/icon_airplane_ticket"
             android:background="@android:color/transparent"/>
 
         <com.google.android.material.textview.MaterialTextView
@@ -154,7 +154,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="Total Miles"
-            android:fontFamily="@font/mulish_light"/>
+            android:fontFamily="@font/mulish_regular"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/rowTextViewTotalMiles"

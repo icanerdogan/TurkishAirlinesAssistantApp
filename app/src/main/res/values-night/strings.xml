@@ -7,6 +7,6 @@
     <string name="timetable">Timetable</string>
     <string name="flight_miles">Flight Miles</string>
     <string name="award_miles">Award Miles</string>
-    <string name="origin">ORG</string>
-    <string name="destination">DEST</string>
+    <string name="origin">FROM</string>
+    <string name="destination">TO</string>
 </resources>

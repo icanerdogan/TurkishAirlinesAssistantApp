@@ -12,32 +12,60 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Flight Date  -->
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFlightDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/mulish_light"
+                android:gravity="center"
+                android:text="Flight Date" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textViewFlightDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/mulish_black"
+                android:gravity="center"
+                android:text="Flight Date"
+                android:textSize="23sp" />
+
+        </LinearLayout>
+
         <!-- Airport  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="0.5"
                 android:hint="@string/origin"
                 app:endIconDrawable="@drawable/icon_flight_takeoff"
-                app:endIconMode="custom"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                app:endIconMode="custom">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/editTextOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="IST"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -48,39 +76,25 @@
                 android:tint="@color/Black" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="0.5"
                 android:hint="@string/destination"
                 app:endIconDrawable="@drawable/icon_flight_land"
-                app:endIconMode="custom"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                app:endIconMode="custom">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/editTextDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DSS"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"/>
-
-        <!-- Flight Date  -->
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:fontFamily="@font/mulish_black"
-            android:text="Flight Date" />
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
@@ -91,8 +105,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -164,8 +178,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -233,6 +247,17 @@
                 android:layout_margin="16dp"
                 android:contentDescription=""
                 app:srcCompat="@drawable/icon_calculate" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/mulish_lightitalic"
+                android:gravity="bottom"
+                android:text="(*) fields are required."
+                android:textColor="@color/AirlinesRed"
+                android:textSize="10sp" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>

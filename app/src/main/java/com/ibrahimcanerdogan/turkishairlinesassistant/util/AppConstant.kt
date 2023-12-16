@@ -1,5 +1,8 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.util
 
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 object AppConstant {
@@ -9,5 +12,14 @@ object AppConstant {
     fun getDeviceLanguage() : String {
         return if (Locale.getDefault().displayLanguage == "tr") "TR"
         else "EN"
+    }
+
+    fun getTodayDate() : String {
+
+        val calendar: Calendar = Calendar.getInstance()
+        val today: Date = calendar.time
+
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+        return dateFormat.format(today)
     }
 }

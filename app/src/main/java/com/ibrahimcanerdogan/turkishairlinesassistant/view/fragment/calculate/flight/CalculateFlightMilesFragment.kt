@@ -1,6 +1,5 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.flight
 
-import android.R.attr.editable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,16 +9,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentCalculateFlightMilesBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.CalculateFlightRequest
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestDetail
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.calculateFlightToJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.FlightMilesResponseDataDetail
+import com.ibrahimcanerdogan.turkishairlinesassistant.util.AppConstant
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 import javax.inject.Inject
 
 
@@ -48,6 +54,33 @@ class CalculateFlightMilesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+
+            textViewFlightDate.text = AppConstant.getTodayDate()
+
+            val constraintsBuilder = CalendarConstraints.Builder()
+                    .setValidator(DateValidatorPointForward.now())
+
+
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                    .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                    .setCalendarConstraints(constraintsBuilder.build())
+                    .setTitleText("Select Flight Date")
+                    .build()
+
+            datePicker.addOnPositiveButtonClickListener {
+                val timeZoneUTC: TimeZone = TimeZone.getDefault()
+                val offsetFromUTC: Int = timeZoneUTC.getOffset(Date().getTime()) * -1
+                // Create a date format, then a date object with our offset
+                val simpleFormat = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                val date = Date(it + offsetFromUTC)
+
+                textViewFlightDate.text = simpleFormat.format(date)
+            }
+            linearLayoutFlightDate.setOnClickListener {
+                datePicker.show(parentFragmentManager, TAG)
+            }
+
+
             var cardType = "CC"
             radioButtonClassicCard.setOnCheckedChangeListener { _, isChecked ->
                 if(isChecked) {
@@ -144,7 +177,7 @@ class CalculateFlightMilesFragment : Fragment() {
                         flightMilesDetailOrigin = editTextOrigin.text.toString(),
                         flightMilesDetailDestination = editTextDestination.text.toString(),
                         flightMilesDetailCardType = cardType,
-                        flightMilesDetailFlightDate = "25.12.2023",
+                        flightMilesDetailFlightDate = textViewFlightDate.text.toString(),
                     ),
                     FlightMilesRequestHeader(
                         flightMilesAirlineCode = airlinesCode
