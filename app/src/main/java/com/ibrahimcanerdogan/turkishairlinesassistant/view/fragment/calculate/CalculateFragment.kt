@@ -5,16 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
-import com.ibrahimcanerdogan.turkishairlinesassistant.R
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.FragmentCalculateBinding
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestDetail
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.CalculateFlightRequest
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.FlightMilesRequestHeader
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.request.calculateFlightToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.view.adapter.CalculateViewPagerAdapter
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.adapter.calculate.CalculateViewPagerAdapter
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint

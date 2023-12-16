@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.tabs.TabLayoutMediator
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.BottomSheetCalculateFlightMilesBinding
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.FlightMilesResponseDataDetail
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.adapter.calculate.CalculateFlightBottomSheetAdapter
 
 class CalculateFlightMilesBottomSheet(
     private val calculateFlightMilesResponse: ArrayList<FlightMilesResponseDataDetail>?
@@ -31,10 +33,14 @@ class CalculateFlightMilesBottomSheet(
 
         dialog?.let {
             val sheet = it as BottomSheetDialog
-            sheet.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            sheet.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
-        //calculateFlightMilesResponse?.forEach {}
+        binding.apply {
+            flightMilesViewPager.adapter = CalculateFlightBottomSheetAdapter(calculateFlightMilesResponse!!)
+            TabLayoutMediator(flightMilesIndicator, flightMilesViewPager) { _, _ -> }.attach()
+
+        }
     }
 
     override fun onDestroy() {

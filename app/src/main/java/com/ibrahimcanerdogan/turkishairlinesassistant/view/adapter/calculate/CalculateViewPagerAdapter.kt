@@ -1,4 +1,4 @@
-package com.ibrahimcanerdogan.turkishairlinesassistant.view.adapter
+package com.ibrahimcanerdogan.turkishairlinesassistant.view.adapter.calculate
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
