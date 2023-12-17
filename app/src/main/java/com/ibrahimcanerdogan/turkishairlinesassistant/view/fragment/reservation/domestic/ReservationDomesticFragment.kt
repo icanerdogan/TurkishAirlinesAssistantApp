@@ -2,6 +2,7 @@ package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation
 
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.websdom.ReservationWebsdomRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.websdom.reservationWebsdomToJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.ReservationResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation.ReservationBottomSheet
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -89,12 +91,11 @@ class ReservationDomesticFragment : Fragment() {
     }
 
     private fun getDomesticReservation(reservationResponse: ReservationResponse?) {
-        if (reservationResponse == null) Toast.makeText(requireContext(), "null", Toast.LENGTH_LONG).show()
+        if (reservationResponse == null) return Toast.makeText(requireContext(), "null", Toast.LENGTH_LONG).show()
 
-        reservationResponse?.let {
-            println(it.message)
-            Toast.makeText(requireContext(), it.message.description, Toast.LENGTH_LONG).show()
-        }
+        val modalBottomSheet = ReservationBottomSheet.newInstance(reservationResponse)
+        modalBottomSheet.show(childFragmentManager, ReservationBottomSheet.TAG)
+        Log.i(TAG, reservationResponse.message.description)
     }
 
     override fun onDestroyView() {
