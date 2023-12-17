@@ -1,6 +1,7 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation.international
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.international.ReservationInternationalRequestHeader
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.request.international.reservationInternationalToJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.ReservationResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation.ReservationBottomSheet
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.reservation.ReservationViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -83,8 +85,9 @@ class ReservationInternationalFragment : Fragment() {
 
     private fun getInternationalReservation(reservationResponse: ReservationResponse?) {
         reservationResponse?.let {
-            println(it.message)
-            Toast.makeText(requireContext(), it.message.description, Toast.LENGTH_LONG).show()
+            val modalBottomSheet = ReservationBottomSheet.newInstance(it)
+            modalBottomSheet.show(childFragmentManager, ReservationBottomSheet.TAG)
+            Log.i(TAG, it.message.description)
         }
     }
 

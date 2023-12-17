@@ -1,5 +1,9 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class ReservationInfoOTAResponse(
     val isAward: Boolean,
     val isCircleItinerary: Boolean,
@@ -9,4 +13,4 @@ data class ReservationInfoOTAResponse(
     val isPurged: Boolean,
     val isVIPIncluded: Boolean,
     val pnrOwner: String
-)
+) : Parcelable
