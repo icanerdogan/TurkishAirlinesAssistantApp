@@ -1,5 +1,9 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class AirTraveler(
     val AccompaniedByInfantInd: Boolean,
     val Comment: CommentX,
@@ -13,4 +17,4 @@ data class AirTraveler(
     val PersonName: PersonName,
     val ProfileRef: ProfileRef,
     val Telephone: Telephone
-)
+) : Parcelable

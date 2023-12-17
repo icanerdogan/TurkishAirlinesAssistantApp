@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_port" />
     <fragment
         android:id="@+id/reservationFragment"
-        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.ReservationFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation.ReservationFragment"
         android:label="fragment_reservation"
         tools:layout="@layout/fragment_reservation" />
     <fragment

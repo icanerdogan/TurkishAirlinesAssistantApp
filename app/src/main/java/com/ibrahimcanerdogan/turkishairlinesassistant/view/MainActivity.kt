@@ -8,7 +8,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.ActivityMainBi
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.AvailableFlightsFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.CalculateFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.PortFragment
-import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.ReservationFragment
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation.ReservationFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.TimetableFragment
 import dagger.hilt.android.AndroidEntryPoint
 

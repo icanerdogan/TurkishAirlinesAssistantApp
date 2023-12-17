@@ -1,5 +1,9 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Contact(
     val email: String,
     val emailLanguage: String,
@@ -8,4 +12,4 @@ data class Contact(
     val passengerIndex: String,
     val receiveSMS: Boolean,
     val receiveSMSLanguage: String
-)
+) : Parcelable
