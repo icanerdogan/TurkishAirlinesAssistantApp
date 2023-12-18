@@ -9,7 +9,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.AvailableFli
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.CalculateFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.PortFragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.reservation.ReservationFragment
-import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.TimetableFragment
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.timetable.TimetableFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
