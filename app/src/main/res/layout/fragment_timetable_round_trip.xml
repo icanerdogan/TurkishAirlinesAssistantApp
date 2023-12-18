@@ -116,7 +116,8 @@
                         android:fontFamily="@font/mulish_regular"
                         android:maxLength="3"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:inputType="textCapCharacters" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -143,7 +144,8 @@
                         android:fontFamily="@font/mulish_regular"
                         android:maxLength="3"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:inputType="textCapCharacters" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>

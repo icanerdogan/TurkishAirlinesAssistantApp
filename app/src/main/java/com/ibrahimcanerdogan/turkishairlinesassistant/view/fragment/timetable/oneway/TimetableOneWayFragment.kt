@@ -22,6 +22,8 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.Ti
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.timetableOneWayRequestToJsonObject
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.util.AppConstant
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,12 +39,19 @@ class TimetableOneWayFragment : Fragment() {
     private var _binding: FragmentTimetableOneWayBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, factory).get(TimetableViewModel::class.java)
+    private val timetableViewModel by lazy {
+        ViewModelProvider(this, timetableFactory).get(TimetableViewModel::class.java)
+    }
+
+    private val calculateViewModel by lazy {
+        ViewModelProvider(this, calculateFactory).get(CalculateViewModel::class.java)
     }
 
     @Inject
-    lateinit var factory: TimetableViewModelFactory
+    lateinit var calculateFactory: CalculateViewModelFactory
+
+    @Inject
+    lateinit var timetableFactory: TimetableViewModelFactory
 
     private var formattedDepartureDate = AppConstant.getFormattedTodayDate()
     private var airlinesCode = "TK"
@@ -55,10 +64,18 @@ class TimetableOneWayFragment : Fragment() {
     ): View {
         _binding = FragmentTimetableOneWayBinding.inflate(inflater, container, false)
 
-        viewModel.timetableData.observe(viewLifecycleOwner, ::observeTimetableOneWay)
+        timetableViewModel.timetableData.observe(viewLifecycleOwner, ::observeTimetableOneWay)
 
         AppConstant.flightTextWatcher(binding.editTextOrigin)
         AppConstant.flightTextWatcher(binding.editTextDestination)
+
+        calculateViewModel.getAirportsList()
+        calculateViewModel.airportListData.observe(viewLifecycleOwner) {
+            with(binding) {
+                editTextOrigin.setSimpleItems(it)
+                editTextDestination.setSimpleItems(it)
+            }
+        }
 
         return binding.root
     }
@@ -74,7 +91,7 @@ class TimetableOneWayFragment : Fragment() {
             getSelectedScheduleType()
 
             buttonTimetableOneWay.setOnClickListener {
-                viewModel.getTimetableDetails(
+                timetableViewModel.getTimetableDetails(
                     TimetableOneWayRequest(
                         requestHeader = RequestHeader(airlineCode = airlinesCode),
                         OTA_AirScheduleRQ = OTAAirScheduleRQ(
@@ -82,8 +99,8 @@ class TimetableOneWayFragment : Fragment() {
                             FlightTypePref = FlightTypePref(DirectAndNonStopOnlyInd = false),
                             OriginDestinationInformation = OriginDestinationInformation(
                                 DepartureDateTime(WindowAfter = "P3D", WindowBefore= "P3D", Date = formattedDepartureDate),
-                                DestinationLocation(LocationCode = "ESB", MultiAirportCityInd = isMultiAirportCity),
-                                OriginLocation(LocationCode= "IST", MultiAirportCityInd = isMultiAirportCity)
+                                DestinationLocation(LocationCode = editTextDestination.text.toString(), MultiAirportCityInd = isMultiAirportCity),
+                                OriginLocation(LocationCode= editTextOrigin.text.toString(), MultiAirportCityInd = isMultiAirportCity)
                             )
                         ),
                         scheduleType = scheduleType,
