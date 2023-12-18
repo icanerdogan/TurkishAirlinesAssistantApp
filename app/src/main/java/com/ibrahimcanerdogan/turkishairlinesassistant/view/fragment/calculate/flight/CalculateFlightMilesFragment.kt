@@ -47,6 +47,8 @@ class CalculateFlightMilesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCalculateFlightMilesBinding.inflate(inflater, container, false)
+        AppConstant.flightTextWatcher(binding.editTextDestination)
+        AppConstant.flightTextWatcher(binding.editTextOrigin)
         return binding.root
     }
 
@@ -141,33 +143,6 @@ class CalculateFlightMilesFragment : Fragment() {
                     editTextDestination.setSimpleItems(it)
                 }
             }
-            binding.editTextOrigin.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-                override fun afterTextChanged(s: Editable?) {
-                    val text = s.toString()
-                    val upperCaseText = text.uppercase(Locale.getDefault())
-
-                    if (text != upperCaseText) {
-                        binding.editTextOrigin.setText(upperCaseText)
-                        binding.editTextOrigin.setSelection(upperCaseText.length)
-                    }
-                }
-            })
-
-            binding.editTextDestination.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-                override fun afterTextChanged(s: Editable?) {
-                    val text = s.toString()
-                    val upperCaseText = text.uppercase(Locale.getDefault())
-
-                    if (text != upperCaseText) {
-                        binding.editTextDestination.setText(upperCaseText)
-                        binding.editTextDestination.setSelection(upperCaseText.length)
-                    }
-                }
-            })
 
             buttonCalculateFlightMiles.setOnClickListener {
                 Log.i(TAG, "flightMilesDetailOrigin: ${editTextOrigin.text} flightMilesDetailDestination: ${editTextDestination.text} flightMilesDetailCardType: $cardType")
