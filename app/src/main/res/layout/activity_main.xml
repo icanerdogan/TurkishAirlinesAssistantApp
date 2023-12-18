@@ -48,7 +48,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:src="@drawable/icon_airlines"
+            android:src="@drawable/icon_turkish_airlines"
             android:layout_gravity="center"/>
 
     </FrameLayout>
