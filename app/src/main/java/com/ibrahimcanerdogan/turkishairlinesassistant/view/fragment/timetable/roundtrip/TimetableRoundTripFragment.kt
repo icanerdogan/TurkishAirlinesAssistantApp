@@ -56,7 +56,6 @@ class TimetableRoundTripFragment : Fragment() {
     private var formattedDepartureDate = AppConstant.getFormattedTodayDate()
     private var formattedReturnDate = AppConstant.getFormattedTomorrowDate()
 
-    private var airlinesCode = "TK"
     private var isMultiAirportCity : Boolean = true
     private var scheduleType = "D"
 
@@ -89,16 +88,14 @@ class TimetableRoundTripFragment : Fragment() {
 
             setDepartureTime()
             setReturnTime()
-            getSelectedAirlines()
             getSelectedMultiAirportCity()
             getSelectedScheduleType()
 
             buttonTimetableRoundTrip.setOnClickListener {
                 timetableViewModel.getTimetableRoundTripDetails(
                     TimetableRoundTripRequest(
-                        requestHeader = RequestHeader(airlineCode = airlinesCode),
+                        requestHeader = RequestHeader(),
                         OTA_AirScheduleRQ = OTAAirScheduleRQ(
-                            AirlineCode = airlinesCode,
                             FlightTypePref = FlightTypePref(DirectAndNonStopOnlyInd = false),
                             OriginDestinationInformation = OriginDestinationInformation(
                                 DepartureDateTime(WindowAfter = "P3D", WindowBefore= "P3D", Date = formattedDepartureDate),
@@ -144,22 +141,6 @@ class TimetableRoundTripFragment : Fragment() {
                 radioButtonWeekly.isChecked = false
             }
         }
-    }
-
-    private fun FragmentTimetableRoundTripBinding.getSelectedAirlines(): String {
-        radioButtonTurkishAirlines.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId) {
-                airlinesCode = "TK"
-                radioButtonAJet.isChecked = false
-            }
-        }
-        radioButtonAJet.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId) {
-                airlinesCode = "AJ"
-                radioButtonTurkishAirlines.isChecked = false
-            }
-        }
-        return airlinesCode
     }
 
     private fun FragmentTimetableRoundTripBinding.getSelectedMultiAirportCity(): Boolean {

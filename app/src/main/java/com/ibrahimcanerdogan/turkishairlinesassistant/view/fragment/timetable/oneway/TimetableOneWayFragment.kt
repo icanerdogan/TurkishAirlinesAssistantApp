@@ -54,7 +54,6 @@ class TimetableOneWayFragment : Fragment() {
     lateinit var timetableFactory: TimetableViewModelFactory
 
     private var formattedDepartureDate = AppConstant.getFormattedTodayDate()
-    private var airlinesCode = "TK"
     private var isMultiAirportCity : Boolean = true
     private var scheduleType = "D"
 
@@ -86,16 +85,14 @@ class TimetableOneWayFragment : Fragment() {
         binding.apply {
 
             setOneWayTime()
-            getSelectedAirlines()
             getSelectedMultiAirportCity()
             getSelectedScheduleType()
 
             buttonTimetableOneWay.setOnClickListener {
                 timetableViewModel.getTimetableOneWayDetails(
                     TimetableOneWayRequest(
-                        requestHeader = RequestHeader(airlineCode = airlinesCode),
+                        requestHeader = RequestHeader(),
                         OTA_AirScheduleRQ = OTAAirScheduleRQ(
-                            AirlineCode = airlinesCode,
                             FlightTypePref = FlightTypePref(DirectAndNonStopOnlyInd = false),
                             OriginDestinationInformation = OriginDestinationInformation(
                                 DepartureDateTime(WindowAfter = "P3D", WindowBefore= "P3D", Date = formattedDepartureDate),
@@ -140,22 +137,6 @@ class TimetableOneWayFragment : Fragment() {
                 radioButtonWeekly.isChecked = false
             }
         }
-    }
-
-    private fun FragmentTimetableOneWayBinding.getSelectedAirlines(): String {
-        radioButtonTurkishAirlines.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId) {
-                airlinesCode = "TK"
-                radioButtonAJet.isChecked = false
-            }
-        }
-        radioButtonAJet.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId) {
-                airlinesCode = "AJ"
-                radioButtonTurkishAirlines.isChecked = false
-            }
-        }
-        return airlinesCode
     }
 
     private fun FragmentTimetableOneWayBinding.getSelectedMultiAirportCity(): Boolean {

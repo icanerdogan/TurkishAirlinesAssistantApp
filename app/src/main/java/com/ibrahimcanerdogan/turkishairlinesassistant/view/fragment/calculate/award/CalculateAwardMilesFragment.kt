@@ -1,4 +1,4 @@
-package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.miles
+package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.award
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

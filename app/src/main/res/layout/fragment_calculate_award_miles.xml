@@ -6,7 +6,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragment.calculate.miles.CalculateAwardMilesFragment">
+    tools:context=".view.fragment.calculate.award.CalculateAwardMilesFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimation1"

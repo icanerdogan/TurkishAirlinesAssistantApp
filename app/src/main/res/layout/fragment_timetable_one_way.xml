@@ -42,7 +42,7 @@
                     android:fontFamily="@font/mulish_black"
                     android:gravity="center"
                     android:text="Departure Date"
-                    android:textSize="20sp" />
+                    android:textSize="23sp" />
 
             </LinearLayout>
 
@@ -216,61 +216,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mulish_regular"
                         android:text="Monthly" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp" />
-
-            <!--Multi Airport City-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/icon_airlines" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.4"
-                    android:fontFamily="@font/mulish_light"
-                    android:paddingStart="5dp"
-                    android:text="Airlines"
-                    android:textSize="15sp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radioButtonTurkishAirlines"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:checked="true"
-                        android:fontFamily="@font/mulish_regular"
-                        android:text="Turkish Airlines" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtonAJet"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:fontFamily="@font/mulish_regular"
-                        android:text="Anadolu Jet" />
                 </LinearLayout>
 
             </LinearLayout>

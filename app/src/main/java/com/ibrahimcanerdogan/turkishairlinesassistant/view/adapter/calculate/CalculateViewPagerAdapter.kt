@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.flight.CalculateFlightMilesFragment
-import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.miles.CalculateAwardMilesFragment
+import com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.calculate.award.CalculateAwardMilesFragment
 
 class CalculateViewPagerAdapter(
     fragmentActivity: FragmentActivity
