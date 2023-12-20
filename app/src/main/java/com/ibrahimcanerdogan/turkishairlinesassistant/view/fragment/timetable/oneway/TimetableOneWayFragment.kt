@@ -18,9 +18,9 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OT
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginDestinationInformation
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginLocation
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.RequestHeader
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.TimetableOneWayRequest
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.timetableOneWayRequestToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.oneway.TimetableOneWayRequest
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.oneway.timetableOneWayRequestToJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.oneway.TimetableOneWayResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.util.AppConstant
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
@@ -64,7 +64,7 @@ class TimetableOneWayFragment : Fragment() {
     ): View {
         _binding = FragmentTimetableOneWayBinding.inflate(inflater, container, false)
 
-        timetableViewModel.timetableData.observe(viewLifecycleOwner, ::observeTimetableOneWay)
+        timetableViewModel.timetableOneWayData.observe(viewLifecycleOwner, ::observeTimetableOneWay)
 
         AppConstant.flightTextWatcher(binding.editTextOrigin)
         AppConstant.flightTextWatcher(binding.editTextDestination)
@@ -91,7 +91,7 @@ class TimetableOneWayFragment : Fragment() {
             getSelectedScheduleType()
 
             buttonTimetableOneWay.setOnClickListener {
-                timetableViewModel.getTimetableDetails(
+                timetableViewModel.getTimetableOneWayDetails(
                     TimetableOneWayRequest(
                         requestHeader = RequestHeader(airlineCode = airlinesCode),
                         OTA_AirScheduleRQ = OTAAirScheduleRQ(
@@ -111,7 +111,7 @@ class TimetableOneWayFragment : Fragment() {
         }
     }
 
-    private fun observeTimetableOneWay(timetableResponse: TimetableResponse?) {
+    private fun observeTimetableOneWay(timetableResponse: TimetableOneWayResponse?) {
         if (timetableResponse == null) return
 
         println(timetableResponse.message)

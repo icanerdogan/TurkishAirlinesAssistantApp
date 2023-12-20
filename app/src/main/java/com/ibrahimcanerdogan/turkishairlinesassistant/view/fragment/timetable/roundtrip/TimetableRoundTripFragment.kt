@@ -18,9 +18,9 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OT
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginDestinationInformation
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginLocation
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.RequestHeader
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.TimetableRoundTripRequest
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.timetableRoundTripRequestToJsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.roundtrip.TimetableRoundTripRequest
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.roundtrip.timetableRoundTripRequestToJsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.roundtrip.TimetableRoundTripResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.util.AppConstant
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
@@ -66,7 +66,7 @@ class TimetableRoundTripFragment : Fragment() {
     ): View {
         _binding = FragmentTimetableRoundTripBinding.inflate(inflater, container, false)
 
-        timetableViewModel.timetableData.observe(viewLifecycleOwner, ::observeTimetableRoundTrip)
+        timetableViewModel.timetableRoundTripData.observe(viewLifecycleOwner, ::observeTimetableRoundTrip)
 
         AppConstant.flightTextWatcher(binding.editTextOrigin)
         AppConstant.flightTextWatcher(binding.editTextDestination)
@@ -94,7 +94,7 @@ class TimetableRoundTripFragment : Fragment() {
             getSelectedScheduleType()
 
             buttonTimetableRoundTrip.setOnClickListener {
-                timetableViewModel.getTimetableDetails(
+                timetableViewModel.getTimetableRoundTripDetails(
                     TimetableRoundTripRequest(
                         requestHeader = RequestHeader(airlineCode = airlinesCode),
                         OTA_AirScheduleRQ = OTAAirScheduleRQ(
@@ -115,7 +115,7 @@ class TimetableRoundTripFragment : Fragment() {
         }
     }
 
-    private fun observeTimetableRoundTrip(timetableResponse: TimetableResponse?) {
+    private fun observeTimetableRoundTrip(timetableResponse: TimetableRoundTripResponse?) {
         if (timetableResponse == null) return
 
         println(timetableResponse.message)

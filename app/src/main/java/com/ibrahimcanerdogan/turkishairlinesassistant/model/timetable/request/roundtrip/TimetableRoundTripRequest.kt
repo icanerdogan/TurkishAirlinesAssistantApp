@@ -1,13 +1,13 @@
-package com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request
+package com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.roundtrip
 
 import com.google.gson.JsonObject
-
-data class TimetableOneWayRequest(
-    val requestHeader: RequestHeader,
-    val OTA_AirScheduleRQ: OTAAirScheduleRQ,
-    val scheduleType: String,
-    val tripType: String
-)
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.DepartureDateTime
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.DestinationLocation
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.FlightTypePref
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OTAAirScheduleRQ
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginDestinationInformation
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginLocation
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.RequestHeader
 
 data class TimetableRoundTripRequest(
     val requestHeader: RequestHeader,
@@ -16,18 +16,6 @@ data class TimetableRoundTripRequest(
     val scheduleType: String,
     val tripType: String
 )
-
-fun TimetableOneWayRequest.timetableOneWayRequestToJsonObject(): JsonObject {
-    val jsonObject = JsonObject()
-
-    // Adding individual properties to the JsonObject
-    jsonObject.add("OTA_AirScheduleRQ", createOTAAirScheduleRQJson(OTA_AirScheduleRQ))
-    jsonObject.add("requestHeader", createRequestHeaderJson(requestHeader))
-    jsonObject.addProperty("scheduleType", scheduleType)
-    jsonObject.addProperty("tripType", tripType)
-
-    return jsonObject
-}
 
 fun TimetableRoundTripRequest.timetableRoundTripRequestToJsonObject(): JsonObject {
     val jsonObject = JsonObject()

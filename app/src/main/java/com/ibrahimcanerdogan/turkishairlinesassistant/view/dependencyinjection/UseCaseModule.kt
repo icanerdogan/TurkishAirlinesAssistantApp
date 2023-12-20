@@ -9,7 +9,8 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostAvailab
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostReservationUseCase
-import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostTimetableUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.timetable.PostTimetableOneWayUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.timetable.PostTimetableRoundTripUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,9 +55,17 @@ class UseCaseModule {
 
     @Singleton
     @Provides
-    fun provideTimetableUseCase(
+    fun provideTimetableOneWayUseCase(
         timetableRepository: TimetableRepository
-    ) : PostTimetableUseCase {
-        return PostTimetableUseCase(timetableRepository)
+    ) : PostTimetableOneWayUseCase {
+        return PostTimetableOneWayUseCase(timetableRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTimetableRoundTripUseCase(
+        timetableRepository: TimetableRepository
+    ) : PostTimetableRoundTripUseCase {
+        return PostTimetableRoundTripUseCase(timetableRepository)
     }
 }

@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.JsonObject
-import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostTimetableUseCase
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.timetable.PostTimetableOneWayUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.timetable.PostTimetableRoundTripUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.oneway.TimetableOneWayResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.roundtrip.TimetableRoundTripResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,16 +17,30 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TimetableViewModel @Inject constructor(
-    private val postTimetableUseCase: PostTimetableUseCase
+    private val postTimetableOneWayUseCase: PostTimetableOneWayUseCase,
+    private val postTimetableRoundTripUseCase: PostTimetableRoundTripUseCase
 ) : ViewModel() {
 
-    private var timetable = MutableLiveData<TimetableResponse?>()
-    val timetableData : LiveData<TimetableResponse?>
-        get() = timetable
+    private var timetableOneWay = MutableLiveData<TimetableOneWayResponse?>()
+    val timetableOneWayData : LiveData<TimetableOneWayResponse?>
+        get() = timetableOneWay
 
-    fun getTimetableDetails(postData: JsonObject) = viewModelScope.launch(Dispatchers.IO) {
+    fun getTimetableOneWayDetails(postData: JsonObject) = viewModelScope.launch(Dispatchers.IO) {
         try {
-            timetable.postValue(postTimetableUseCase.execute(postData))
+            timetableOneWay.postValue(postTimetableOneWayUseCase.execute(postData))
+        }
+        catch (e: Exception) {
+            Log.e("TimetableViewModel", e.message.toString())
+        }
+    }
+
+    private var timetableRoundTrip = MutableLiveData<TimetableRoundTripResponse?>()
+    val timetableRoundTripData : LiveData<TimetableRoundTripResponse?>
+        get() = timetableRoundTrip
+
+    fun getTimetableRoundTripDetails(postData: JsonObject) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            timetableRoundTrip.postValue(postTimetableRoundTripUseCase.execute(postData))
         }
         catch (e: Exception) {
             Log.e("TimetableViewModel", e.message.toString())
