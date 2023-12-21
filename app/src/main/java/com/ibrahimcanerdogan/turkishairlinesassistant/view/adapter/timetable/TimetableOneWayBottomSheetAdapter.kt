@@ -9,13 +9,20 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.O
 import com.ibrahimcanerdogan.turkishairlinesassistant.util.AppConstant
 
 class TimetableOneWayBottomSheetAdapter(
-    private val timetableOneWayResponse : List<OriginDestinationOption>
-) :  RecyclerView.Adapter<TimetableOneWayBottomSheetAdapter.ViewHolder>() {
+    private val timetableOneWayResponse: List<OriginDestinationOption>
+) : RecyclerView.Adapter<TimetableOneWayBottomSheetAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: BottomSheetTimetableRowItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: BottomSheetTimetableRowItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
-        return ViewHolder(BottomSheetTimetableRowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            BottomSheetTimetableRowItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -23,20 +30,25 @@ class TimetableOneWayBottomSheetAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder){
-            val sortedList = timetableOneWayResponse.sortedBy { it.FlightSegment.DepartureDateTime.split("T")[0] }
+        with(holder) {
+            val sortedList =
+                timetableOneWayResponse.sortedBy { it.FlightSegment.DepartureDateTime.split("T")[0] }
 
-            with(sortedList[position]){
+            with(sortedList[position]) {
                 if (this.FlightSegment.OperatingAirline.Code == "AJ") {
                     binding.imageViewAirlines.setImageResource(R.drawable.icon_anadolu_jet_circle)
                 }
 
-                binding.textViewDepartureTime.text = this.FlightSegment.DepartureDateTime.split("T")[1].dropLast(3)
-                binding.textViewDepartureAirport.text = this.FlightSegment.DepartureAirport.LocationCode
-                binding.textViewArrivalTime.text = this.FlightSegment.ArrivalDateTime.split("T")[1].dropLast(3)
+                binding.textViewDepartureTime.text =
+                    this.FlightSegment.DepartureDateTime.split("T")[1].dropLast(3)
+                binding.textViewDepartureAirport.text =
+                    this.FlightSegment.DepartureAirport.LocationCode
+                binding.textViewArrivalTime.text =
+                    this.FlightSegment.ArrivalDateTime.split("T")[1].dropLast(3)
                 binding.textViewArrivalAirport.text = this.FlightSegment.ArrivalAirport.LocationCode
 
-                binding.textViewFlightDate.text = AppConstant.convertFormatDate(this.FlightSegment.DepartureDateTime.split("T")[0])
+                binding.textViewFlightDate.text =
+                    AppConstant.convertFormatDate(this.FlightSegment.DepartureDateTime.split("T")[0])
                 binding.textViewFlightCode.text = this.FlightSegment.FlightNumber
             }
         }
