@@ -1,5 +1,9 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class FlightSegment(
     val ArrivalAirport: ArrivalAirport,
     val ArrivalDateTime: String,
@@ -15,4 +19,4 @@ data class FlightSegment(
     val ScheduleValidEndDate: String,
     val ScheduleValidStartDate: String,
     val StopQuantity: String
-)
+) : Parcelable

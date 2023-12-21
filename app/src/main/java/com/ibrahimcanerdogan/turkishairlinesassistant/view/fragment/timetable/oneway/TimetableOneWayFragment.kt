@@ -1,6 +1,7 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.timetable.oneway
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -111,8 +112,10 @@ class TimetableOneWayFragment : Fragment() {
     private fun observeTimetableOneWay(timetableResponse: TimetableOneWayResponse?) {
         if (timetableResponse == null) return
 
-        println(timetableResponse.message)
-        Toast.makeText(requireContext(), timetableResponse.message.description, Toast.LENGTH_LONG).show()
+        val timetableOneWayBottomSheet = TimetableOneWayBottomSheet.newInstance(timetableResponse)
+        timetableOneWayBottomSheet.show(childFragmentManager, TimetableOneWayBottomSheet.TAG)
+
+        Log.i(TAG, timetableResponse.message.description)
     }
 
     private fun FragmentTimetableOneWayBinding.getSelectedScheduleType() {

@@ -53,6 +53,14 @@ object AppConstant {
         return dateFormat.format(tomorrow)
     }
 
+    fun convertFormatDate(date : String) : String {
+        val currentFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val dateObject = currentFormat.parse(date)
+        val convertedFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+
+        return convertedFormat.format(dateObject!!)
+    }
+
     fun flightTextWatcher(textView: MaterialAutoCompleteTextView) {
         textView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
