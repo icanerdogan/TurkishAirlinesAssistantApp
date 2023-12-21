@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/icon_turkish_airlines_circle"
             android:scaleType="centerInside" />
 
