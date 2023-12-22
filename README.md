@@ -11,3 +11,7 @@ Availability             |  Calcualte Flight Miles          |   Calcualte Flight
 Reservation Domestic             |  Reservation International         |   Reservation International Sheet
 :-------------------------:|:-------------------------: |:-------------------------:
 ![](https://raw.githubusercontent.com/icanerdogan/TurkishAirlinesAssistantApp/master/document/preview/reservation-domestic.png)  |  ![](https://raw.githubusercontent.com/icanerdogan/TurkishAirlinesAssistantApp/master/document/preview/reservation-international.png)  |  ![](https://raw.githubusercontent.com/icanerdogan/TurkishAirlinesAssistantApp/master/document/preview/reservation-international-bottom-sheet.png)
+
+Timetable One Way           |  Timetable Round Trip         |   Timetable Bottom Sheet
+:-------------------------:|:-------------------------: |:-------------------------:
+![](https://github.com/icanerdogan/TurkishAirlinesAssistantApp/blob/master/document/preview/timetable-oneway.jpg)  |  ![](https://raw.githubusercontent.com/icanerdogan/TurkishAirlinesAssistantApp/master/document/preview/timetable-roundtrip.jpg)  |  ![](https://raw.githubusercontent.com/icanerdogan/TurkishAirlinesAssistantApp/master/document/preview/timetable-bottom-sheet.jpg)
