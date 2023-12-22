@@ -1,13 +1,16 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.roundtrip
 
+import android.os.Parcelable
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.Message
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class TimetableRoundTripResponse(
     val data: TimetableRoundTripData,
     val message: Message,
     val requestId: String,
     val status: String
-)
+) : Parcelable
 
 /*
 

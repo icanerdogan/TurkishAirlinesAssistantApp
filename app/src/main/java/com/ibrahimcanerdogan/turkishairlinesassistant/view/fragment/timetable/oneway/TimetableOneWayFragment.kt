@@ -28,6 +28,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.C
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -112,10 +113,18 @@ class TimetableOneWayFragment : Fragment() {
     private fun observeTimetableOneWay(timetableResponse: TimetableOneWayResponse?) {
         if (timetableResponse == null) return
 
-        val timetableOneWayBottomSheet = TimetableOneWayBottomSheet.newInstance(timetableResponse)
-        timetableOneWayBottomSheet.show(childFragmentManager, TimetableOneWayBottomSheet.TAG)
+        try {
+            val timetableOneWayBottomSheet = TimetableOneWayBottomSheet.newInstance(timetableResponse)
+            timetableOneWayBottomSheet.show(childFragmentManager, TimetableOneWayBottomSheet.TAG)
 
-        Log.i(TAG, timetableResponse.message.description)
+            Log.i(TAG, timetableResponse.message.description)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(),
+                "An error has occurred, our teams will investigate the problem.",
+                Toast.LENGTH_SHORT
+            ).show()
+            Log.e(TAG, e.message.toString())
+        }
     }
 
     private fun FragmentTimetableOneWayBinding.getSelectedScheduleType() {

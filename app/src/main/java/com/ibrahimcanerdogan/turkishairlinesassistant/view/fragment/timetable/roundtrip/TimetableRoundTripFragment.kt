@@ -1,6 +1,7 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.timetable.roundtrip
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.C
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModel
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.timetable.TimetableViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -115,8 +117,18 @@ class TimetableRoundTripFragment : Fragment() {
     private fun observeTimetableRoundTrip(timetableResponse: TimetableRoundTripResponse?) {
         if (timetableResponse == null) return
 
-        println(timetableResponse.message)
-        Toast.makeText(requireContext(), timetableResponse.message.description, Toast.LENGTH_LONG).show()
+        try {
+            val timetableOneWayBottomSheet = TimetableRoundTripBottomSheet.newInstance(timetableResponse)
+            timetableOneWayBottomSheet.show(childFragmentManager, TimetableRoundTripBottomSheet.TAG)
+            Log.i(TAG, timetableResponse.message.description)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(),
+                "An error has occurred, our teams will investigate the problem.",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            Log.e(TAG, e.message.toString())
+        }
     }
 
     private fun FragmentTimetableRoundTripBinding.getSelectedScheduleType() {

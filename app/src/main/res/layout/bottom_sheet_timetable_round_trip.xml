@@ -19,12 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
-        <!-- Bottom sheet contents. -->
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/timetableViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/timetableIndicator"
             android:layout_width="match_parent"
@@ -37,6 +31,11 @@
             app:tabPaddingEnd="10dp"
             app:tabPaddingStart="10dp"
             android:layout_margin="10dp"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/timetableViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
