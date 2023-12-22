@@ -1,8 +1,15 @@
-package com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request
+package com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.roundtrip
 
 import com.google.gson.JsonObject
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.DepartureDateTime
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.DestinationLocation
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.FlightTypePref
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OTAAirScheduleRQ
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginDestinationInformation
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.OriginLocation
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.request.RequestHeader
 
-data class TimetableRequest(
+data class TimetableRoundTripRequest(
     val requestHeader: RequestHeader,
     val OTA_AirScheduleRQ: OTAAirScheduleRQ,
     val returnDate: String,
@@ -10,7 +17,7 @@ data class TimetableRequest(
     val tripType: String
 )
 
-fun TimetableRequest.timetableRequestToJsonObject(): JsonObject {
+fun TimetableRoundTripRequest.timetableRoundTripRequestToJsonObject(): JsonObject {
     val jsonObject = JsonObject()
 
     // Adding individual properties to the JsonObject

@@ -4,7 +4,8 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostAvailab
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostCalculateFlightMilesUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostPortUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostReservationUseCase
-import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.PostTimetableUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.timetable.PostTimetableOneWayUseCase
+import com.ibrahimcanerdogan.turkishairlinesassistant.domain.usecase.timetable.PostTimetableRoundTripUseCase
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.available.AvailableFlightsViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.calculate.CalculateViewModelFactory
 import com.ibrahimcanerdogan.turkishairlinesassistant.view.viewmodel.port.PortViewModelFactory
@@ -55,8 +56,9 @@ class ViewModelFactoryModule {
     @Singleton
     @Provides
     fun provideTimetableViewModelFactory(
-        postTimetableUseCase: PostTimetableUseCase
+        postTimetableOneWayUseCase: PostTimetableOneWayUseCase,
+        postTimetableRoundTripUseCase: PostTimetableRoundTripUseCase
     ) : TimetableViewModelFactory {
-        return TimetableViewModelFactory(postTimetableUseCase)
+        return TimetableViewModelFactory(postTimetableOneWayUseCase, postTimetableRoundTripUseCase)
     }
 }

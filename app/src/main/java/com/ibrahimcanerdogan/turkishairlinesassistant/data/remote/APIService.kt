@@ -5,7 +5,8 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.airport.Ai
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.calculate.flight.response.CalculateFlightMilesResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response.PortResponse
 import com.ibrahimcanerdogan.turkishairlinesassistant.model.reservation.response.ReservationResponse
-import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.TimetableResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.oneway.TimetableOneWayResponse
+import com.ibrahimcanerdogan.turkishairlinesassistant.model.timetable.response.roundtrip.TimetableRoundTripResponse
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -54,6 +55,14 @@ interface APIService {
         "apikey: ${BuildConfig.API_KEY}"
     )
     @POST("getTimeTable")
-    suspend fun apiTimetable(@Body postData: RequestBody): TimetableResponse
+    suspend fun apiTimetableOneWay(@Body postData: RequestBody): TimetableOneWayResponse
+
+    @Headers(
+        "apisecret: ${BuildConfig.API_SECRET}",
+        "Content-Type: application/json",
+        "apikey: ${BuildConfig.API_KEY}"
+    )
+    @POST("getTimeTable")
+    suspend fun apiTimetableRoundTrip(@Body postData: RequestBody): TimetableRoundTripResponse
 
 }

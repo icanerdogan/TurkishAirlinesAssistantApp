@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_reservation" />
     <fragment
         android:id="@+id/timetableFragment"
-        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.TimetableFragment"
+        android:name="com.ibrahimcanerdogan.turkishairlinesassistant.view.fragment.timetable.TimetableFragment"
         android:label="fragment_timetable"
         tools:layout="@layout/fragment_timetable" />
 </navigation>
