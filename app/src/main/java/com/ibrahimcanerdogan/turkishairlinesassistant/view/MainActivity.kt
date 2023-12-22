@@ -3,7 +3,6 @@ package com.ibrahimcanerdogan.turkishairlinesassistant.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.ibrahimcanerdogan.turkishairlinesassistant.R
 import com.ibrahimcanerdogan.turkishairlinesassistant.databinding.ActivityMainBinding
