@@ -2,7 +2,13 @@ plugins {
     id 'kotlin-kapt'
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
 }
+
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
 
 android {
     namespace 'com.ibrahimcanerdogan.turkishairlinesassistant'
@@ -12,28 +18,35 @@ android {
         applicationId "com.ibrahimcanerdogan.turkishairlinesassistant"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        buildConfigField "String", "API_KEY", "\"${properties.getProperty("API_KEY")}\""
+        buildConfigField "String", "API_SECRET", "\"${properties.getProperty("API_SECRET")}\""
+
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
         viewBinding true
         dataBinding true
+        buildConfig true
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
@@ -55,5 +68,30 @@ dependencies {
     // Lottie Animation
     def lottie_version = "6.1.0"
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation 'com.squareup.retrofit2:converter-scalars:2.7.0'
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+    implementation "com.squareup.okhttp3:logging-interceptor"
+
+    // Dagger-Hilt
+    def dagger_version = "2.42"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:hilt-android:2.48"
+    kapt "com.google.dagger:hilt-compiler:2.44.2"
+    implementation "androidx.hilt:hilt-work:1.1.0"
+    kapt "androidx.hilt:hilt-compiler:1.1.0"
+    kapt "com.google.dagger:hilt-android-compiler:2.43.2"
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:2.46.1"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:2.44.2"
+    testImplementation "com.google.dagger:hilt-android-testing:2.46.1"
+    kaptTest "com.google.dagger:hilt-compiler:2.44.2"
+
+    // Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
 
 }

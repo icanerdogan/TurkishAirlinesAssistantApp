@@ -7,4 +7,15 @@
     <string name="available">Available</string>
     <string name="reservation">Reservation</string>
     <string name="timetable">Timetable</string>
+    <string name="flight_miles">Flight Miles</string>
+    <string name="award_miles">Award Miles</string>
+    <string name="origin">FROM</string>
+    <string name="destination">TO</string>
+    <string name="reservation_id">Reservation ID</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="reservation_detail_description">This method returns the detailed information of the reservations created through our reservation system. It covers reservations made from all sales channels.</string>
+    <string name="reservation_id_example">Reservation ID (e.g. UTRXLU)</string>
+    <string name="surname_example">Surname (e.g. CELIKTAS)</string>
+    <string name="name_example">Name (e.g. IREM)</string>
 </resources>
