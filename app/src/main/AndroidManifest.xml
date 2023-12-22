@@ -15,11 +15,12 @@
         android:roundIcon="@mipmap/icon_launcher_round"
         android:windowSoftInputMode="adjustResize"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TurkishAirlinesAssistantApp"
+        android:theme="@style/Theme.TurkishAirlinesAssistantApp.Splash"
         tools:targetApi="31">
         <activity
             android:name=".view.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.TurkishAirlinesAssistantApp.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
