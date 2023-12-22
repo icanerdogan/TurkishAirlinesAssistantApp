@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Class Codes"
+            android:fontFamily="@font/mulish_light"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rowTextViewClassCodes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="G, L, T, V"
+            android:textSize="32dp"
+            android:fontFamily="@font/mulish_bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Cabin Type"
+            android:fontFamily="@font/mulish_light"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rowTextViewCabinType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Economy"
+            android:textSize="32dp"
+            android:fontFamily="@font/mulish_bold"/>
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/rowButtonBaseMiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_airplane_ticket"
+            android:background="@android:color/transparent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="start"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Base Miles"
+            android:fontFamily="@font/mulish_regular"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rowTextViewBaseMiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:text="1654"
+            android:textSize="20dp"
+            android:fontFamily="@font/mulish_bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/rowButtonPromoMiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_airplane_ticket"
+            android:background="@android:color/transparent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="start"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Promo Miles"
+            android:fontFamily="@font/mulish_regular"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rowTextViewPromoMiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:text="0"
+            android:textSize="20dp"
+            android:fontFamily="@font/mulish_bold"/>
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/rowButtonTotalMiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_airplane_ticket"
+            android:background="@android:color/transparent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="start"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Total Miles"
+            android:fontFamily="@font/mulish_regular"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rowTextViewTotalMiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:text="1654"
+            android:textSize="20dp"
+            android:fontFamily="@font/mulish_bold"/>
+    </LinearLayout>
+
+</LinearLayout>
