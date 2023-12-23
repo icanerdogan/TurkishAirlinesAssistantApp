@@ -40,14 +40,14 @@ class PortFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getPortData(PortRequest(requestHeader = PortRequestHeader()).portToJsonObject())
+        // viewModel.getPortData(PortRequest(requestHeader = PortRequestHeader()).portToJsonObject())
 
-        viewModel.portData.observe(viewLifecycleOwner) {
+/*        viewModel.portData.observe(viewLifecycleOwner) {
             it?.let {
                 println(it.portResponseMessage.portMessageDescription)
                 Toast.makeText(requireContext(), it.portResponseMessage.portMessageDescription, Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
     }
     override fun onDestroyView() {
         super.onDestroyView()

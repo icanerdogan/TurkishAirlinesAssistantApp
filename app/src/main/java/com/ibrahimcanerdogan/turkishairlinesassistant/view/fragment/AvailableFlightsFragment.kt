@@ -47,7 +47,7 @@ class AvailableFlightsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getAvailableFlights(
+/*        viewModel.getAvailableFlights(
             AvailableFlightsDomesticRequest(
                 requestHeader = RequestHeader(),
                 ReducedDataIndicator = false,
@@ -105,7 +105,7 @@ class AvailableFlightsFragment : Fragment() {
         viewModel.availableFlightsData.observe(viewLifecycleOwner) {
             println(it.availableFlightsDomesticResponseFromJsonObject().message)
             Toast.makeText(requireContext(), it.availableFlightsDomesticResponseFromJsonObject().message.description, Toast.LENGTH_LONG).show()
-        }
+        }*/
     }
 
     override fun onDestroyView() {
