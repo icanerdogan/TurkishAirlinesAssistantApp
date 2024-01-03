@@ -5,6 +5,8 @@ import org.json.JSONObject
 
 interface PortRepository {
 
-    suspend fun apiPort(postData: JSONObject): PortResponse?
+    suspend fun apiPortAnadoluJet(postData: JSONObject): PortResponse?
+
+    suspend fun apiPortTurkishAirlines(): PortResponse?
 
 }

@@ -13,17 +13,26 @@ class PortRepositoryImpl @Inject constructor(
     private val portDataSource: PortDataSource
 ) : PortRepository {
 
-    override suspend fun apiPort(postData: JSONObject): PortResponse? {
+    override suspend fun apiPortAnadoluJet(postData: JSONObject): PortResponse? {
         val jsonMediaType = "application/json; charset=utf-8".toMediaType()
         val requestBody = postData.toString().toRequestBody(jsonMediaType)
 
         return withContext(Dispatchers.IO) {
             try {
-                portDataSource.getPort(requestBody)
+                portDataSource.getPortAnadoluJet(requestBody)
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
             }
+        }
+    }
+
+    override suspend fun apiPortTurkishAirlines(): PortResponse? = withContext(Dispatchers.IO) {
+        try {
+            portDataSource.getPortTurkishAirlines()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
         }
     }
 }

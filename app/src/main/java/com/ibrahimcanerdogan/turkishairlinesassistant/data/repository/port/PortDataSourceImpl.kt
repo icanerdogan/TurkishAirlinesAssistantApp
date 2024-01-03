@@ -9,8 +9,12 @@ class PortDataSourceImpl @Inject constructor(
     private val apiService: APIService
 ) : PortDataSource {
 
-    override suspend fun getPort(postData: RequestBody): PortResponse {
-        return apiService.apiPostPort(postData)
+    override suspend fun getPortAnadoluJet(postData: RequestBody): PortResponse {
+        return apiService.apiPostAnadoluJetPort(postData)
+    }
+
+    override suspend fun getPortTurkishAirlines(): PortResponse {
+        return apiService.apiPostTurkishAirlinesPort()
     }
 
 }

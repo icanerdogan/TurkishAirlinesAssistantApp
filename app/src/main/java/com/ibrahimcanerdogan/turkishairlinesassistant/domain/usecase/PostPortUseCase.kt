@@ -10,6 +10,10 @@ class PostPortUseCase @Inject constructor(
 ) {
 
     suspend fun execute(postData: JSONObject) : PortResponse? {
-        return portRepository.apiPort(postData)
+        return portRepository.apiPortAnadoluJet(postData)
+    }
+
+    suspend fun execute() : PortResponse? {
+        return portRepository.apiPortTurkishAirlines()
     }
 }

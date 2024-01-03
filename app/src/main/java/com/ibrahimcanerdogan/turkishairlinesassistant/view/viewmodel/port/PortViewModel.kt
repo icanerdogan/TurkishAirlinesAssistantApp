@@ -18,16 +18,27 @@ class PortViewModel @Inject constructor(
     private val postPortUseCase: PostPortUseCase
 ) : ViewModel() {
 
-    private var port = MutableLiveData<PortResponse?>()
-    val portData : LiveData<PortResponse?>
-        get() = port
-    fun getPortData(postData: JSONObject) = viewModelScope.launch(Dispatchers.IO) {
+    private var portAnadoluJet = MutableLiveData<PortResponse?>()
+    val portAnadoluJetData : LiveData<PortResponse?>
+        get() = portAnadoluJet
+    fun getPortAnadoluJetData(postData: JSONObject) = viewModelScope.launch(Dispatchers.IO) {
         try {
-            port.postValue(postPortUseCase.execute(postData))
+            portAnadoluJet.postValue(postPortUseCase.execute(postData))
         }
         catch (e: Exception) {
             Log.e("PortViewModel", e.message.toString())
         }
     }
 
+    private var portTurkishAirlines = MutableLiveData<PortResponse?>()
+    val portTurkishAirlinesData : LiveData<PortResponse?>
+        get() = portTurkishAirlines
+    fun getPortTurkishAirlinesData() = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            portTurkishAirlines.postValue(postPortUseCase.execute())
+        }
+        catch (e: Exception) {
+            Log.e("PortViewModel", e.message.toString())
+        }
+    }
 }
