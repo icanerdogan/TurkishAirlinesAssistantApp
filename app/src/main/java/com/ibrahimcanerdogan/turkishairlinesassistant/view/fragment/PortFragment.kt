@@ -51,6 +51,7 @@ class PortFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleObserve()
+        viewModel.getPortTurkishAirlinesData()
 
         binding.apply {
             recyclerViewPort.apply {
