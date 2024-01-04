@@ -5,6 +5,8 @@ import okhttp3.RequestBody
 
 interface PortDataSource {
 
-    suspend fun getPort(postData: RequestBody) : PortResponse
+    suspend fun getPortAnadoluJet(postData: RequestBody) : PortResponse
+
+    suspend fun getPortTurkishAirlines() : PortResponse
 
 }

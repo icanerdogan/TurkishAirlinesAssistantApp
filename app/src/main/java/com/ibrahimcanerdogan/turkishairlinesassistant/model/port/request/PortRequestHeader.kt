@@ -4,7 +4,7 @@ import com.ibrahimcanerdogan.turkishairlinesassistant.util.AppConstant
 import java.util.UUID
 
 data class PortRequestHeader(
-    val airlineCode: String = "TK",
+    val airlineCode: String = "AJ",
     val channel: String = "MOBILE",
     val clientTransactionId: String = UUID.randomUUID().toString(),
     val clientUsername: String = "OPENAPI",

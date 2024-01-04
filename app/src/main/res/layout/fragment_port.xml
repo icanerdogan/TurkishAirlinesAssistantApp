@@ -5,24 +5,76 @@
     tools:context=".view.fragment.PortFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
     android:background="@color/White"
     android:orientation="vertical">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimation1"
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="coming_soon.json"
-        app:lottie_loop="true"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/mulish_bold"
+        android:text="Airlines Ports"
+        android:textSize="20sp" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimation2"
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="coming_soon_rocket.json"
-        app:lottie_loop="true"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/port_detail_description"
+        android:textSize="10sp"
+        android:fontFamily="@font/mulish_light"/>
+
+    <!-- Airlines  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mulish_black"
+            android:text="Airlines" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupAirlines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radio_button_1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonTurkishAirlines"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:checked="true"
+                    android:fontFamily="@font/mulish_regular"
+                    android:text="Turkish Airlines" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonAJet"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/mulish_regular"
+                    android:text="Anadolu Jet" />
+            </LinearLayout>
+        </RadioGroup>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPort"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
 </LinearLayout>

@@ -1,10 +1,12 @@
 package com.ibrahimcanerdogan.turkishairlinesassistant.model.port.response
 
 import com.google.gson.annotations.SerializedName
+import java.util.UUID
 
 data class PortResponseInfo(
-    // @SerializedName("City")
-    // val portResponseInfoCity: PortCity,
+    val portResponseInfoID: String = UUID.randomUUID().toString(),
+    //@SerializedName("City")
+    //val portResponseInfoCity: PortCity,
     @SerializedName("Code")
     val portResponseInfoCode: String,
     // @SerializedName("Coordinate")

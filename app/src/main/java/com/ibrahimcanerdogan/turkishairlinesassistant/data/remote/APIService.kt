@@ -25,13 +25,16 @@ interface APIService {
     @GET("https://raw.githubusercontent.com/icanerdogan/public-json-datasets/master/airports/airports.json")
     suspend fun apiGetAirports(): AirportResponse
 
+    @GET("https://raw.githubusercontent.com/icanerdogan/TurkishAirlinesAssistantApp/master/document/json-dataset/turkish-airlines-ports.json")
+    suspend fun apiPostTurkishAirlinesPort(): PortResponse
+
     @Headers(
         "apisecret: ${BuildConfig.API_SECRET}",
         "Content-Type: application/json",
         "apikey: ${BuildConfig.API_KEY}"
     )
     @POST("getPortList")
-    suspend fun apiPostPort(@Body postData: RequestBody): PortResponse
+    suspend fun apiPostAnadoluJetPort(@Body postData: RequestBody): PortResponse
 
     @Headers(
         "apisecret: ${BuildConfig.API_SECRET}",
