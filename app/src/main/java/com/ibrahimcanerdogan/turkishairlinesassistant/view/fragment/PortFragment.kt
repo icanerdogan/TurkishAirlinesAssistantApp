@@ -82,9 +82,6 @@ class PortFragment : Fragment() {
     private fun observeAnadoluJet(portResponse: PortResponse?) {
         portResponse?.let {
             portAdapter.setData(it.portResponseData.portResponseInfo)
-
-            println(it.portResponseMessage.portMessageDescription)
-            Toast.makeText(requireContext(), it.portResponseMessage.portMessageDescription, Toast.LENGTH_LONG).show()
             Log.i("PortFragment", it.portResponseMessage.portMessageDescription)
         }
     }
@@ -92,9 +89,6 @@ class PortFragment : Fragment() {
     private fun observeTurkishAirlines(portResponse: PortResponse?) {
         portResponse?.let {
             portAdapter.setData(it.portResponseData.portResponseInfo)
-
-            println(it.portResponseMessage.portMessageDescription)
-            Toast.makeText(requireContext(), it.portResponseMessage.portMessageDescription, Toast.LENGTH_LONG).show()
             Log.i("PortFragment", it.portResponseMessage.portMessageDescription)
         }
     }
